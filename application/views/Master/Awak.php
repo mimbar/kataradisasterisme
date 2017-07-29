@@ -24,7 +24,8 @@
 	'datepicker/datepicker3.css',
 	'daterangepicker/daterangepicker.css',
 	'bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css',
-	'datatables/dataTables.bootstrap.css'
+	'datatables/dataTables.bootstrap.css',
+	'swal/sweetalert2.min.css'
 	];
 
 	echo abcss($bcss);
@@ -61,7 +62,9 @@
 	'slimScroll/jquery.slimscroll.min.js',
 	'fastclick/fastclick.js',
 	'datatables/jquery.dataTables.min.js',
-	'datatables/dataTables.bootstrap.min.js'
+	'datatables/dataTables.bootstrap.min.js',
+	'datatablejs/dreamtheater.js',
+	'swal/sweetalert2.min.js'
 	];
 
 	$bjs = [
@@ -76,28 +79,63 @@
 	echo apljs($pljs);
 	echo abjs($bjs);
 	echo adjs($djs);
+	echo "<script>";
+	$a= $this->input->get('action', TRUE);
+	if ($a == "success") {
+		?>
+		swal({
+		title: 'Berhasil!',
+		text: 'Data Berhasil disimpan.',
+		type: 'success',
+		timer: 1500
+	}).catch(swal.noop)
+		<?php
+	} elseif ($a == "fail") {
+		?>
+		swal({
+		title: 'Gagal!',
+		text: 'Data Gagal disimpan.',
+		type: 'error',
+		timer: 1500
+	}).catch(swal.noop)
+		<?php
+	} elseif ($a == "editsuccess") {
+		?>
+		swal({
+		title: 'Berhasil!',
+		text: 'Data Berhasil diedit.',
+		type: 'success',
+		timer: 1500
+	}).catch(swal.noop)
+		<?php
+	}
+	echo "</script>";
 	?>
-	<script type="text/javascript">
-		$(document).ready(function() {
-                table = $('#datatable').DataTable({ 
-                    "processing": true,
-                    "serverSide": true,
-                    "order": [], 
-                    "ajax": {"url": "json/client", "type": "POST"},
-                    "columns": [
-                    {"data": "nama"},
-                    {"data": "no_telpon"},
-                    {"data": "email"},
-                    {"data": "kota"},
-                    {"data": "alamat"},
-                    {"data": "view"}
-                    ],
 
-                });
-
-            });
-
-
-        </script>
-    </body>
-    </html>
+	<script>
+		$(function () {
+			$('#editclientmodal').on('show.bs.modal', function (event) {
+				var button = $(event.relatedTarget) 
+				var customer_id = button.data('customer_id')
+				var nama = button.data('nama')
+				var alamat = button.data('alamat')
+				var no_telpon = button.data('no_telpon')
+				var email = button.data('email')
+				var kota = button.data('kota')
+				var provinsi = button.data('provinsi')
+				var catatan = button.data('catatan')
+				var modal = $(this)
+				modal.find('.customer_id').val(customer_id)
+				modal.find('.nama').val(nama)
+				modal.find('.alamat').val(alamat)
+				modal.find('.no_telpon').val(no_telpon)
+				modal.find('.email').val(email)
+				modal.find('.kota').val(kota)
+				modal.find('.provinsi').val(provinsi)
+				modal.find('.catatan').val(catatan)
+			});
+		});
+	</script>
+	
+</body>
+</html>
