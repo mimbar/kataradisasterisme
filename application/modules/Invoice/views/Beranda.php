@@ -112,7 +112,7 @@ $csrf = array(
 										</div>
 										<div class="form-group">
 											<label for="kota">Status</label>
-											<?php echo select2('status','status_invoice','form-control select2 status','kode','status','status',''); ?>
+											<?php echo select2('status','status_invoice','form-control select2 statusinvoice','kode','status','status',''); ?>
 											<input type="hidden" name="method" value="edit" />
 											<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
 										</div>

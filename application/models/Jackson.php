@@ -16,12 +16,12 @@ class Jackson extends CI_Model {
     }
 
     function invoice() {
-        $this->datatables->select('invoice_id,no_invoice,tanggal_generate,nama,status,jatuh_tempo');
+        $this->datatables->select('invoice_id,no_invoice,nama,jenis,tanggal_generate,customer_id,jatuh_tempo,status,customer_id');
         $this->datatables->from('v_invoice_list');
-        $this->datatables->where('status =','1');
+        $this->datatables->where('aktif =','1');
         $baseurl = base_url();
-        $this->datatables->add_column("status","<center><img src='$baseurl/assets/disasterisme/invoice/$1.png'></center>","status");
-        $this->datatables->add_column('view', '<a data-toggle="modal" data-target="#editinvoicemodal"  class="btn btn-info btn-xs" data-invoice_id="$1" data-no_invoice="$2" data-tanggal_generate="$3" data-nama="$4" data-status="$5" data-jatuh_tempo="$6">edit</a> | <a type="button" class="btn btn-danger btn-xs" href="invoice/delete/$1">delete</a>', 'invoice_id,no_invoice,tanggal_generate,nama,status,jatuh_tempo');
+        $this->datatables->add_column("statusicon","<center><img src='$baseurl/assets/disasterisme/invoice/$1.png'></center>","status");
+        $this->datatables->add_column('view', '<a data-toggle="modal" data-target="#editinvoicemodal"  class="btn btn-info btn-xs" data-invoice_id="$1" data-jenis="$2" data-tanggal_generate="$3" data-customer_id="$4" data-jatuh_tempo="$5" data-status="$6" data-customer_id="$7">edit</a> | <a type="button" class="btn btn-danger btn-xs" href="invoice/delete/$1">delete</a>', 'invoice_id, jenis, tanggal_generate, customer_id, jatuh_tempo, status, customer_id');
         return $this->datatables->generate();
     }
 

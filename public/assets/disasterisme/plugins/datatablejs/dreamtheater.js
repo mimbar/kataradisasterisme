@@ -23,7 +23,7 @@
  		{"data": "tanggal_generate"},
  		{"data": "nama"},
  		{"data": "jatuh_tempo"},
- 		{"data": "status"},
+ 		{"data": "statusicon"},
  		{"data": "view"},
  		],
  	});
@@ -59,17 +59,16 @@
  		var status = button.data('status')
  		var modal = $(this)
  		modal.find('.invoice_id').val(invoice_id)
- 		modal.find('.jenis').val(jenis)
+ 		$('.jenis').val(jenis).trigger('change')
  		modal.find('.tanggal_generate').val(tanggal_generate)
- 		modal.find('.customer_id').val(customer_id)
+ 		$('.customer_id').val(customer_id).trigger('change')
  		modal.find('.jatuh_tempo').val(jatuh_tempo)
- 		modal.find('.status').val(status)
+ 		$('.status').val(status).trigger('change')
  	});
 
 
  	$('.datepicker').datepicker({
- 		autoclose: true,
- 		format: 'mm/dd/yyyy'
+ 		autoclose: true
  	})
 
  	$(".select2").select2();

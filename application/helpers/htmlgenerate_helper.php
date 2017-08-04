@@ -82,13 +82,20 @@ if (! function_exists('rupiah')){
 	}
 }
 
-if (! function_exists('dateinput')){
-	function dateinput($angka){
+if (! function_exists('rupiah')){
+	function rupiah($angka){
 		$jumlah_desimal ="0";
 		$pemisah_desimal =",";
 		$pemisah_ribuan =".";
 
 		return "Rp ".number_format($angka, $jumlah_desimal, $pemisah_desimal, $pemisah_ribuan);
+	}
+}
+
+if (! function_exists('dateinput')){
+	function dateinput($tanggal){
+		$start = date("Y-m-d", strtotime($tanggal));
+		return $start;
 	}
 }
 
