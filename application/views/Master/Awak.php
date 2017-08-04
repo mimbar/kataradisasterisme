@@ -25,7 +25,8 @@
 	'daterangepicker/daterangepicker.css',
 	'bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css',
 	'datatables/dataTables.bootstrap.css',
-	'swal/sweetalert2.min.css'
+	'swal/sweetalert2.min.css',
+	'datepicker/datepicker3.css'
 	];
 
 	echo abcss($bcss);
@@ -64,7 +65,8 @@
 	'datatables/jquery.dataTables.min.js',
 	'datatables/dataTables.bootstrap.min.js',
 	'datatablejs/dreamtheater.js',
-	'swal/sweetalert2.min.js'
+	'swal/sweetalert2.min.js',
+	'datepicker/bootstrap-datepicker.js'
 	];
 
 	$bjs = [

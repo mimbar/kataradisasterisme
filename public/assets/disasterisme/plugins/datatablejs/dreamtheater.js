@@ -1,5 +1,5 @@
  $(function () {
- 	var table = $('#clientdt').DataTable({
+ 	$('#clientdt').DataTable({
  		"processing": true,
  		"serverSide": true,
  		"responsive": true,
@@ -12,4 +12,23 @@
  		{"data": "view"},
  		],
  	});
+
+ 	$('#invoicedt').DataTable({
+ 		"processing": true,
+ 		"serverSide": true,
+ 		"responsive": true,
+ 		"ajax": {"url": "json/invoice", "type": "POST"},
+ 		"columns": [
+ 		{"data": "no_invoice"},
+ 		{"data": "tanggal_generate"},
+ 		{"data": "nama"},
+ 		{"data": "jatuh_tempo"},
+ 		{"data": "status"},
+ 		{"data": "view"},
+ 		],
+ 	});
+
+ 	$('.datepicker').datepicker({
+      autoclose: true
+    })
  });

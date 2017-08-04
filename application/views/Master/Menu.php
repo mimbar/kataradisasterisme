@@ -2,7 +2,7 @@
 	<section class="sidebar">
 		<div class="user-panel">
 			<div class="pull-left image">
-				<img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+				<img src="<?php echo base_url('/assets/disasterisme/dist/img/user2-160x160.jpg'); ?>" class="img-circle" alt="User Image">
 			</div>
 			<div class="pull-left info">
 				<p>Username</p>
@@ -21,22 +21,22 @@
 				</a>
 			</li>
 			<li>
-				<a href="../widgets.html">
+				<a href="../invoice">
 					<i class="fa fa-ticket"></i> <span>Invoice</span>
 				</a>
 			</li>
 			<li>
-				<a href="../widgets.html">
+				<a href="../vendor">
 					<i class="fa fa-plane"></i> <span>Vendor</span>
 				</a>
 			</li>
 			<li>
-				<a href="../widgets.html">
+				<a href="../voucher">
 					<i class="fa fa-barcode"></i> <span>Voucher</span>
 				</a>
 			</li>
 			<li>
-				<a href="../widgets.html">
+				<a href="../report">
 					<i class="fa fa-quote-left"></i> <span>Sales Report</span>
 				</a>
 			</li>

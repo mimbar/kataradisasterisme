@@ -8,6 +8,11 @@ class Json extends CI_Controller {
 		echo $this->Jackson->client();
 	}
 
+	public function invoice(){
+		header('Content-Type: application/json');
+		echo $this->Jackson->invoice();
+	}
+
 }
 
 /* End of file Json.php */
