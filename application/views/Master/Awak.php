@@ -14,7 +14,7 @@
 
 	$distcss = [
 	'css/AdminLTE.min.css',
-	'css/skins/_all-skins.min.css',
+	'css/skins/_all-skins.min.css'
 	];
 
 	$plcss = [
@@ -26,7 +26,8 @@
 	'bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css',
 	'datatables/dataTables.bootstrap.css',
 	'swal/sweetalert2.min.css',
-	'datepicker/datepicker3.css'
+	'datepicker/datepicker3.css',
+	'select2/select2.min.css'
 	];
 
 	echo abcss($bcss);
@@ -66,7 +67,8 @@
 	'datatables/dataTables.bootstrap.min.js',
 	'datatablejs/dreamtheater.js',
 	'swal/sweetalert2.min.js',
-	'datepicker/bootstrap-datepicker.js'
+	'datepicker/bootstrap-datepicker.js',
+	'select2/select2.min.js'
 	];
 
 	$bjs = [
@@ -113,31 +115,5 @@
 	}
 	echo "</script>";
 	?>
-
-	<script>
-		$(function () {
-			$('#editclientmodal').on('show.bs.modal', function (event) {
-				var button = $(event.relatedTarget) 
-				var customer_id = button.data('customer_id')
-				var nama = button.data('nama')
-				var alamat = button.data('alamat')
-				var no_telpon = button.data('no_telpon')
-				var email = button.data('email')
-				var kota = button.data('kota')
-				var provinsi = button.data('provinsi')
-				var catatan = button.data('catatan')
-				var modal = $(this)
-				modal.find('.customer_id').val(customer_id)
-				modal.find('.nama').val(nama)
-				modal.find('.alamat').val(alamat)
-				modal.find('.no_telpon').val(no_telpon)
-				modal.find('.email').val(email)
-				modal.find('.kota').val(kota)
-				modal.find('.provinsi').val(provinsi)
-				modal.find('.catatan').val(catatan)
-			});
-		});
-	</script>
-	
 </body>
 </html>

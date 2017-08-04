@@ -15,29 +15,24 @@ class Client extends CI_Controller {
 			$kota = $inputan['kota'];
 			$provinsi = $inputan['provinsi'];
 			$catatan = $inputan['catatan'];
+			$str = "KTR";
+			$count=$count+1;
+			$no=sprintf("%06d", $count);
+			$no_invoice=$str.$no;
+			$input = [
+			'nama' => $nama,
+			'alamat' => $alamat,
+			'no_telpon' => $no_telpon,
+			'email' => $email,
+			'kota' => $kota,
+			'provinsi' => $provinsi,
+			'catatan' => $catatan,
+			'no_invoice' => $no_invoice
+			];
 			if ($method == "insert") {
-				$input = [
-				'nama' => $nama,
-				'alamat' => $alamat,
-				'no_telpon' => $no_telpon,
-				'email' => $email,
-				'kota' => $kota,
-				'provinsi' => $provinsi,
-				'catatan' => $catatan
-				];
 				$qres = $this->Crud->insert('customer', $input);
-				if ($qres > 0) {redirect('client?action=success', 'refresh');} else {redirect('client?action=fail', 'refresh');};
+				#if ($qres > 0) {redirect('client?action=success', 'refresh');} else {redirect('client?action=fail', 'refresh');};
 			} elseif ($method == "edit") {
-				
-				$input = [
-				'nama' => $nama,
-				'alamat' => $alamat,
-				'no_telpon' => $no_telpon,
-				'email' => $email,
-				'kota' => $kota,
-				'provinsi' => $provinsi,
-				'catatan' => $catatan
-				];
 				$qres = $this->Crud->update('customer',$input,'customer_id',$customer_id);
 				if ($qres === TRUE) {redirect('client?action=editsuccess', 'refresh');} else {redirect('client?action=fail', 'refresh');};
 			}

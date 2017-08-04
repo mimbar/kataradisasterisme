@@ -41,9 +41,6 @@ class Client extends CI_Controller {
 				$qres = $this->Crud->update('customer',$input,'customer_id',$customer_id);
 				if ($qres === TRUE) {redirect('client?action=editsuccess', 'refresh');} else {redirect('client?action=fail', 'refresh');};
 			}
-			
-			
-			
 		}else{
 			$data =[];
 			$this->template->load('Master/Awak', 'Beranda',$data);
