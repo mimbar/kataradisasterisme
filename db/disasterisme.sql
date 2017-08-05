@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-08-04 23:51:57
+Date: 2017-08-05 17:00:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -193,17 +193,17 @@ CREATE TABLE `invoice` (
   CONSTRAINT `invcus` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `jenis` FOREIGN KEY (`jenis`) REFERENCES `jenis_invoice` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `status` FOREIGN KEY (`status`) REFERENCES `status_invoice` (`status`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=220 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=221 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of invoice
 -- ----------------------------
 INSERT INTO `invoice` VALUES ('1', 'KTR000001', '2015-01-11', '1', '3', '2015-03-28', '3', null, '1', '2017-07-24', 'admin', 'admin', 'system', 'system');
 INSERT INTO `invoice` VALUES ('2', 'KTR000002', '2015-01-11', '1', '2', '0000-00-00', '3', null, '1', null, 'admin', 'Katara system', 'system', 'system');
-INSERT INTO `invoice` VALUES ('3', 'KTR000003', '2015-01-11', '1', '4', '0000-00-00', '3', null, '1', null, 'admin', 'Katara system', 'system', 'system');
+INSERT INTO `invoice` VALUES ('3', 'KTR000003', '2015-01-11', '1', '4', '2017-08-31', '3', null, '1', null, 'admin', 'Katara system', 'system', 'system');
 INSERT INTO `invoice` VALUES ('4', 'KTR000004', '2015-01-13', '3', '34', '0000-00-00', '3', null, '1', null, 'operator', 'Katara system', 'admin', 'system');
 INSERT INTO `invoice` VALUES ('5', 'KTR000005', '2015-01-18', '3', '35', '0000-00-00', '3', null, '1', null, 'operator', 'Katara system', 'system', 'system');
-INSERT INTO `invoice` VALUES ('6', 'KTR000006', '2015-01-18', '3', '36', '0000-00-00', '3', null, '1', null, 'operator', 'Katara system', 'system', 'system');
+INSERT INTO `invoice` VALUES ('6', 'KTR000006', '0000-00-00', '3', '36', '0000-00-00', '0', null, '1', null, 'operator', 'Katara system', 'system', 'system');
 INSERT INTO `invoice` VALUES ('7', 'KTR000007', '2015-01-18', '3', '37', '0000-00-00', '3', null, '1', '2015-03-18', 'operator', 'operator', 'system', 'system');
 INSERT INTO `invoice` VALUES ('8', 'KTR000008', '2015-01-18', '7', '5', '0000-00-00', '3', null, '1', '2015-03-18', 'operator', 'operator', 'system', 'system');
 INSERT INTO `invoice` VALUES ('9', 'KTR000009', '2015-01-18', '3', '38', '0000-00-00', '3', null, '1', null, 'operator', 'Katara system', 'system', 'system');
@@ -415,8 +415,9 @@ INSERT INTO `invoice` VALUES ('214', 'KTR000214', '2017-07-25', '1', '2', '2017-
 INSERT INTO `invoice` VALUES ('215', 'KTR000215', '2017-07-28', '7', '6', '2017-07-31', '1', null, '1', null, 'admin', 'Katara system', 'system', 'system');
 INSERT INTO `invoice` VALUES ('216', '', '0000-00-00', '1', '2', '0000-00-00', '0', '', '1', null, '', 'Katara system', 'system', 'system');
 INSERT INTO `invoice` VALUES ('217', '000217', '0000-00-00', '1', '3', '0000-00-00', '0', '', '1', null, '', 'Katara system', 'system', 'system');
-INSERT INTO `invoice` VALUES ('218', '000218', '0000-00-00', '2', '127', '0000-00-00', '1', '', '1', null, '', 'Katara system', 'system', 'system');
+INSERT INTO `invoice` VALUES ('218', '000218', '2017-08-01', '2', '127', '2017-08-31', '3', '', '1', null, '', 'Katara system', 'system', 'system');
 INSERT INTO `invoice` VALUES ('219', 'KTR000219', '2017-08-01', '1', '2', '2017-08-01', '0', '', '1', null, '', 'Katara system', 'system', 'system');
+INSERT INTO `invoice` VALUES ('220', 'KTR000220', '2017-08-05', '9', '126', '2017-09-01', '2', '', '1', null, '', 'Katara system', 'system', 'system');
 
 -- ----------------------------
 -- Table structure for jenis_invoice
@@ -441,6 +442,26 @@ INSERT INTO `jenis_invoice` VALUES ('6', 'Paket Wisata Internasional', 'DOMINTL'
 INSERT INTO `jenis_invoice` VALUES ('7', 'Transportasi', 'TP');
 INSERT INTO `jenis_invoice` VALUES ('8', 'Travel Doc', 'TD');
 INSERT INTO `jenis_invoice` VALUES ('9', 'Other', 'OTH');
+
+-- ----------------------------
+-- Table structure for option
+-- ----------------------------
+DROP TABLE IF EXISTS `option`;
+CREATE TABLE `option` (
+  `opt_id` int(11) NOT NULL AUTO_INCREMENT,
+  `company_name` varchar(50) DEFAULT NULL,
+  `company_address` varchar(50) DEFAULT NULL,
+  `company_email` varchar(50) DEFAULT NULL,
+  `company_phone` varchar(50) DEFAULT NULL,
+  `company_img` varchar(50) DEFAULT NULL,
+  `company_owner` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`opt_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of option
+-- ----------------------------
+INSERT INTO `option` VALUES ('1', 'Katara Tour And Travel', 'Alamat nu sakedahna aya didieu nyaeta alamat lengk', 'email@perusahaan.com', '086665565213', 'posisi_gambar.png', 'Saha we owner na mah');
 
 -- ----------------------------
 -- Table structure for pengaturan
@@ -524,7 +545,7 @@ CREATE TABLE `service_new` (
   PRIMARY KEY (`service_id`),
   KEY `service_new_ibfk_1` (`invoice_id`),
   CONSTRAINT `service_new_ibfk_1` FOREIGN KEY (`invoice_id`) REFERENCES `invoice` (`invoice_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=456 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=458 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of service_new
@@ -532,7 +553,7 @@ CREATE TABLE `service_new` (
 INSERT INTO `service_new` VALUES ('15', '0', '1', 'SUMMER SEASON JOGJAKARTAS', 'CHECK IN : 02 JANUARI 2015\r\nCEHCK OUT : 04 JANUARI 2016\r\nROOM : DELUXE TWIN', '275000', '2', '2', '1100000', '1100000', 'operator', 'operator', null, '1');
 INSERT INTO `service_new` VALUES ('16', '1', '2', 'TIKET TURANGGA', 'RUTE : TASIKMALAYA - SUBANG\r\nKEBERANGKATAN : 05 JANUARI 2015\r\nBOOK CODE : FF1FK3', '435000', '1', '1', '435000', '429750', 'operator', null, null, '1');
 INSERT INTO `service_new` VALUES ('17', '0', '4', 'ASTON PALEMBANG', 'CHECK IN : 11 JANUARI 2015\r\nCHECK OUT : 13 JANUARI 2014\r\nROOM : DELUXE KING', '1400000', '1', '2', '2800000', '2600000', 'operator', 'admin', null, '1');
-INSERT INTO `service_new` VALUES ('18', '0', '3', 'HOTEL ASRI TASIKMALAYA', 'CHECK IN : 08 JANUARI 2015\r\nCHECK OUT : 09 JANUARI 2015\r\nROOM : STANDART DELUXE', '400000', '1', '1', '400000', '360000', 'admin', 'admin', null, '1');
+INSERT INTO `service_new` VALUES ('18', '0', '3', 'HOTEL ASRI TASIKMALAYA0', 'CHECK IN : 08 JANUARI 20150\r\nCHECK OUT : 09 JANUARI 2015\r\nROOM : STANDART DELUXE', '360000', '2', '1', '720000', '3600000', 'admin', 'admin', null, '1');
 INSERT INTO `service_new` VALUES ('19', '1', '5', 'HOTEL FAVE GATSUB JAKARTA', 'CHECK IN : 14 JANUARI 2015\r\nCHECK OUT : 15 JANUARI 2015\r\nROOM : STANDART KING', '572000', '1', '2', '1144000', '996000', 'operator', null, null, '1');
 INSERT INTO `service_new` VALUES ('20', '1', '6', 'KARTIKA CHANDRA JAKARTA', 'CHECK IN : 14 JANUARI 2015\r\nCHECK OUT : 15 JANUARI 2015\r\nROOM : SUP KING', '1980000', '2', '1', '1980000', '1690424', 'operator', null, null, '1');
 INSERT INTO `service_new` VALUES ('21', '0', '6', 'A/N', 'WASISTO HIDAYAT\r\nDINDIN SAEPUDIN', '', '', '', '', '', 'operator', null, null, '1');
@@ -969,6 +990,8 @@ INSERT INTO `service_new` VALUES ('452', '1', '185', 'HOTEL PALU CITY', 'CHECK I
 INSERT INTO `service_new` VALUES ('453', '1', '185', 'SEWA TRANSPORTASI LOKAL', 'TANGGAL : 16, 17, 18 SEPTEMBER 2015\r\n1 UNIT ELF PARIWISATA 12 SEATS\r\nINCL : BBM, DRIVER \r\n\r\nAN : \r\nH. DEDE SUDRAJAT\r\nHENDI PARIADI\r\nARIF RACHMAN HAKIM', '750000', '1', '3', '2250000', '', 'admin', null, null, '1');
 INSERT INTO `service_new` VALUES ('454', '1', '212', 'PAKET TOUR BALI', '3 HARI 2 MALAM', '2000000', '20', '1', '40000000', '1800000', 'zulfi', null, null, '1');
 INSERT INTO `service_new` VALUES ('455', '1', '211', 'FABU HOTEL BANDUNG', 'CHECK IN : 24 JULI 2017\r\nCHECK OUT : 25 JULI 2017\r\n01 STANDAR ROOM INCL B\'FAST\r\n*PAX C/I WITHOUT VOUCHER', '475000', '1', '1', '475000', '375000', 'fitri', 'fitri', null, '1');
+INSERT INTO `service_new` VALUES ('456', null, '3', 'nyobain', 'service', '100000', '2', '1', '200000', '250000', null, null, null, '1');
+INSERT INTO `service_new` VALUES ('457', null, '3', 'deui', 'ah', '80000', '1', '1', '80000', '50000', null, null, null, '1');
 
 -- ----------------------------
 -- Table structure for status_invoice
@@ -1067,7 +1090,7 @@ CREATE VIEW `voucher_new_list` AS select `voucher`.`id_voucher` AS `id_voucher`,
 -- View structure for v_customer
 -- ----------------------------
 DROP VIEW IF EXISTS `v_customer`;
-CREATE QL SECURITY DEFINER  VIEW `v_customer` AS SELECT
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `v_customer` AS SELECT
 customer.customer_id,
 CONCAT(customer.nama,' | ',customer.no_telpon) as nama,
 customer.email,
@@ -1082,10 +1105,36 @@ where customer.`status` = 1
 ORDER BY customer_id asc ;
 
 -- ----------------------------
+-- View structure for v_invoice_details
+-- ----------------------------
+DROP VIEW IF EXISTS `v_invoice_details`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `v_invoice_details` AS SELECT
+invoice.invoice_id,
+invoice.no_invoice,
+invoice.tanggal_generate,
+invoice.jenis,
+jenis_invoice.kode,
+invoice.customer_id,
+customer.nama,
+customer.no_telpon,
+customer.email,
+customer.alamat,
+customer.kota,
+customer.provinsi,
+status_invoice.`status`,
+invoice.jatuh_tempo
+FROM
+invoice
+INNER JOIN customer ON invoice.customer_id = customer.customer_id
+INNER JOIN jenis_invoice ON invoice.jenis = jenis_invoice.id
+INNER JOIN status_invoice ON invoice.`status` = status_invoice.`status`
+ORDER BY invoice_id ;
+
+-- ----------------------------
 -- View structure for v_invoice_list
 -- ----------------------------
 DROP VIEW IF EXISTS `v_invoice_list`;
-CREATE QL SECURITY DEFINER  VIEW `v_invoice_list` AS SELECT
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `v_invoice_list` AS SELECT
 invoice.invoice_id AS invoice_id,
 invoice.no_invoice AS no_invoice,
 invoice.tanggal_generate AS tanggal_generate,
@@ -1114,7 +1163,19 @@ CREATE VIEW `v_sales_report` AS select `invoice`.`tanggal_generate` AS `tanggal_
 -- View structure for v_service_list_detail
 -- ----------------------------
 DROP VIEW IF EXISTS `v_service_list_detail`;
-CREATE VIEW `v_service_list_detail` AS select `service_new`.`no` AS `no`,`service_new`.`invoice_id` AS `invoice_id`,`service_new`.`jenis_layanan` AS `jenis_layanan`,`service_new`.`keterangan` AS `keterangan`,`service_new`.`price` AS `price`,`service_new`.`unit` AS `unit`,`service_new`.`volume` AS `volume`,`service_new`.`total` AS `total`,`service_new`.`service_id` AS `service_id` from `service_new` where (`service_new`.`aktif` = 1) ; ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `v_service_list_detail` AS SELECT
+service_new.`no` AS `no`,
+service_new.invoice_id AS invoice_id,
+service_new.jenis_layanan AS jenis_layanan,
+service_new.keterangan AS keterangan,
+service_new.price AS price,
+service_new.unit AS unit,
+service_new.volume AS volume,
+service_new.total AS total,
+service_new.service_id AS service_id,
+service_new.nett
+from `service_new`
+where (`service_new`.`aktif` = 1) ;
 
 -- ----------------------------
 -- View structure for v_service_list_info
