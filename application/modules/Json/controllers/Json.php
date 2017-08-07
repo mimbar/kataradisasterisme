@@ -13,6 +13,11 @@ class Json extends CI_Controller {
 		echo $this->Jackson->invoice();
 	}
 
+	public function vendor(){
+		header('Content-Type: application/json');
+		echo $this->Jackson->vendor();
+	}
+
 }
 
 /* End of file Json.php */

@@ -28,6 +28,20 @@
  		],
  	});
 
+ 	$('#vendordt').DataTable({
+ 		"processing": true,
+ 		"serverSide": true,
+ 		"responsive": true,
+ 		"ajax": {"url": "json/vendor", "type": "POST"},
+ 		"columns": [
+ 		{"data": "nama"},
+ 		{"data": "jenis"},
+ 		{"data": "alamat"},
+ 		{"data": "telpon"},
+ 		{"data": "view"}
+ 		],
+ 	});
+
  	$('#editclientmodal').on('show.bs.modal', function (event) {
  		var button = $(event.relatedTarget) 
  		var customer_id = button.data('customer_id')
@@ -82,10 +96,11 @@
  			var modal = $(this)
  			modal.find('.invoice_id').val(invoice_id)
  			$('.jenis').val(jenis).trigger('change')
- 			modal.find('.tanggal_generate').val(tanggal_generate)
  			$('.customer_id').val(customer_id).trigger('change')
- 			modal.find('.jatuh_tempo').val(jatuh_tempo)
  			$('.status').val(status).trigger('change')
+ 			modal.find('.tanggal_generate').val(tanggal_generate)
+ 			modal.find('.jatuh_tempo').val(jatuh_tempo)
+ 			
  		}
  		
  	});

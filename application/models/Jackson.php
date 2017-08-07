@@ -25,6 +25,15 @@ class Jackson extends CI_Model {
         return $this->datatables->generate();
     }
 
+    function vendor() {
+        $this->datatables->select('id_vendor, nama, jenis, alamat, telpon');
+        $this->datatables->from('vendor');
+        $this->datatables->where('aktif =','1');
+        $baseurl = base_url();
+        $this->datatables->add_column('view', '<a data-toggle="modal" data-target="#editvendormodal" class="btn btn-info btn-xs" data-id_vendor="$1" data-nama="$2" data-jenis="$3" data-alamat="$4" data-telpon="$5">edit</a> | <a type="button" class="btn btn-danger btn-xs" href="invoice/delete/$1">delete</a>', 'id_vendor, nama, jenis, alamat, telpon');
+        return $this->datatables->generate();
+    }
+
 }
 /* End of file Jackson.php */
 /* Location: ./application/modules/Json/models/Jackson.php */
